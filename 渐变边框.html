@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变边框</title>
+</head>
+<body>
+    <div class="con">
+        <div class="box">
+            <p>AAA</p>
+        </div>
+        <div class="box">
+            <p>BBB</p>
+        </div>
+        <div class="box">
+            <p>CCC</p>
+        </div>
+    </div>
+</body>
+
+<style>
+    /* 背景大小及样式
+    *背景宽高为500px，flex布局改变主轴默认方向，使内部元素可以从上向下排布,调整justify-content和align-item将三个框水平垂直居中；
+    *利用linear-gradient设置两种颜色线性渐变的图片作为背景图片
+    */
+    .con {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(#2cf5e1,#0af4e4);
+}
+.box {
+    width: 300px;
+    height: 50px;
+    /* 标题框之间距离为4px */
+    margin: 4px auto;
+    position: relative;
+    /*渐变背景通过写圆形伪元素旋转，超出部分隐藏实现，所以需要overflow：hidden*/
+    overflow: hidden;
+    border-radius: 4px;
+    /*设置元素阴影x轴偏移量为0，y轴偏移量为10px，阴影模糊半径为15px，阴影颜色为黑色，0.7透明度*/
+    box-shadow: 0 10px 15px rgba(0,0,0,.7);
+    color: #000;
+    font-size: 16px;
+    vertical-align: middle;
+}
+.box::before {
+    /*写一个圆形旋转的渐变图片，通过将其绝对定位，改变margin值来实现调整其位置而不影响其他元素布局*/
+    content: "";
+    display: inline-block;
+    width: 310px;
+    height: 310px;
+    position: absolute;
+    margin-top: -125px;
+    margin-left: -5px;
+    background-image: linear-gradient(45deg,#fff 35%,#f96b2f 60%);
+    /*画一个圆*/
+    border-radius: 50%;
+    /*使用animation和@keyframes来实现旋转动画，动画时长为5s，延迟0s播放*/
+    animation: rotate 5s linear infinite 0s;
+}
+.box::after {
+    content: "";
+    display: inline-block;
+    /*为P标签设置白色的背景图片，通过绝对定位实现元素的自动填充*/
+    position: absolute; 
+    top: 3px;bottom: 3px;
+    left: 3px;right: 3px;
+    background: #fff;
+    border-radius: 3px;
+}
+
+.box>* {
+    /*调整层级使伪元素不遮盖P标签内容*/
+    position: relative;
+    z-index: 1;
+    padding-left: 20px;
+}
+/*
+*调整层级使上一个P标签的阴影不被下一个P遮挡
+*/
+.box:nth-child(1) {
+    z-index: 3;
+}
+.box:nth-child(2) {
+    z-index: 2;
+}
+.box:nth-child(3) {
+    z-index: 1;
+} 
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(355deg);
+    }
+}
+</style>
+</html>
