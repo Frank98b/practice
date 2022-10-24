@@ -1,48 +1,118 @@
 <template>
   <div class="index-container">
-    <!-- 导航栏 -->
-    <div class="page-nav-bar">
-      <div class="nav-left">
-        <span class="local">大连
-          <i class="iconfont icon-xiala"/>
-        </span>
-        <span class="weather">晴 15°C</span>
+    <div class="body">
+      <!-- 导航栏 -->
+      <div class="page-nav-bar">
+        <div class="nav-left">
+          <span class="local">大连
+            <i class="iconfont icon-xiala"/>
+          </span>
+          <span class="weather">晴 15°C</span>
+        </div>
+        <div class="nav-centre">
+          <i class="iconfont icon-sousuo"/>
+          <div class="input">联动云租车,随取...</div>
+          <span class="line"></span>
+          <div class="search-btn">Search</div>
+        </div>
+        <div class="nav-right">
+          <i class="iconfont icon-tianjia"></i>
+        </div>
       </div>
-      <div class="nav-centre">
-        <i class="iconfont icon-sousuo"/>
-        <div class="input">联动云租车,随取...</div>
-        <span class="line"></span>
-        <div class="search-btn">Search</div>
+      <!-- 扫一扫 -->
+      <div class="shortcut">
+        <div class="text">
+          <span class="text1">扫一扫</span>
+          <span class="text2">收付款</span>
+          <span class="text3">出行</span>
+          <span class="text4">卡包</span>
+        </div>
+        <ul>
+          <li class="iconfont icon-saoyisao"></li>
+          <li class="iconfont icon-shoufukuan-1"></li>
+          <li class="iconfont icon-airplane"></li>
+          <li class="iconfont icon-qiabao"></li>
+        </ul>
       </div>
-      <div class="nav-right">
-        <i class="iconfont icon-tianjia"></i>
+      <!-- 扫一扫 -->
+      <!-- 导航栏 -->
+
+      <!-- 小程序 -->
+      <div class="small-programs">
+        <div class="father">
+          <i class="son iconfont icon-elemo
+  "></i>
+          <span class="text">饿了么</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont icon-koubei">口碑</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
+        <div class="father">
+          <i class="son iconfont">1</i>
+          <span class="text">5</span>
+        </div>
       </div>
+      <!-- 小程序 -->
+
+      <!-- 最近消息 -->
+
+      <!-- 最近消息 -->
+
+      <!-- 轮播广告 -->
+      <!-- 轮播广告 -->
+
     </div>
-    <!-- 扫一扫 -->
-    <div class="shortcut">
-      <ul>
-        <li class="iconfont icon-saoyisao">
-        </li>
-        <li class="iconfont icon-shoufukuan-1"></li>
-        <li class="iconfont icon-airplane"></li>
-        <li class="iconfont icon-qiabao"></li>
-      </ul>
-    </div>
-    <!-- 扫一扫 -->
-    <!-- 导航栏 -->
-
-    <!-- 小程序 -->
-    <div></div>
-    <!-- 小程序 -->
-
-    <!-- 最近消息 -->
-
-    <!-- 最近消息 -->
-
-    <!-- 轮播广告 -->
-    <!-- 轮播广告 -->
-
   </div>
+
 </template>
 
 <script>
@@ -71,7 +141,10 @@ export default {
 
 <style lang="less" scoped>
 .index-container {
-  box-sizing: content-box;
+  // box-sizing: content-box;
+  .body {
+    background-color: #767674;
+  }
   .page-nav-bar {
   display: flex;
   justify-content: flex-start;
@@ -164,7 +237,7 @@ export default {
     background-position: 100% 50%;
     background-size: 50%;
     background-repeat:  no-repeat ;
-    background-image: url('@/assets/picture/人民大会堂.png');
+    // background-image: url('@/assets/picture/人民大会堂.png');
     ul {
       display: flex;
       justify-content: center;
@@ -176,7 +249,65 @@ export default {
       height: 150px;
       line-height: 150px;
       font-size: 80px;
+      font-weight: 400;
       color: #FCFEEF;
+    }
+    .text {
+      float: left;
+      position: relative;
+      width: 0px;
+      height: 0px;
+      .text1 {
+        position: absolute;
+        width: 80px;
+        top: 115px;
+        left: 63px;
+        font-size: 25px;
+        color: #FFFFFF;
+      }
+      .text2 {
+        position: absolute;
+        width: 80px;
+        top: 115px;
+        left: 245px;
+        font-size: 25px;
+        color: #FFFFFF;
+      }
+      .text3 {
+        position: absolute;
+        width: 80px;
+        top: 115px;
+        left: 440px;
+        font-size: 25px;
+        color: #FFFFFF;
+      }
+      .text4 {
+        position: absolute;
+        width: 80px;
+        top: 115px;
+        left: 615px;
+        font-size: 25px;
+        color: #F7F7F7;
+      }
+    }
+  }
+  .small-programs {
+    width: 100%;
+    height: 390px;
+    background-color: #F7F7F7;
+    .father {
+      float: left;
+      width: 150px;
+      height: 130px;
+      background-color: #F7F7F7;
+      .son {
+        display: block;
+        width: 60px;
+        height: 60px;
+        font-size: 80px;
+        line-height: 60px;
+        background-color: pink;
+      }
     }
   }
 }

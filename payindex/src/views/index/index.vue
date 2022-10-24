@@ -1,6 +1,6 @@
 <template>
   <div class="tab-bar-container">
-<van-tabbar v-model="active">
+<van-tabbar class="tabbar" v-model="active">
   <van-tabbar-item to="/">
     <i v-if="active === 0" slot="icon" class="iconfont icon-zhifubao1 pay-size"></i>
     <i v-else slot="icon" class="iconfont icon-zhifubao icon-size"></i>
@@ -53,6 +53,9 @@ export default {
 
 <style lang="less" scoped>
 .tab-bar-container{
+  .tabbar {
+    border-top: solid 1px #E9E9E9;
+  }
   .pay-size{
     font-size: 65px;
   }
