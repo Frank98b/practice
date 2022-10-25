@@ -41,74 +41,92 @@
       <div class="small-programs">
         <div class="father">
           <i class="son iconfont icon-elemo
-  "></i>
+          icon-blue"></i>
           <span class="text">饿了么</span>
         </div>
         <div class="father">
-          <i class="son iconfont icon-koubei">口碑</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-koubei icon-orange"></i>
+          <span class="text">口碑</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-shiminzhongxin icon-blue
+"></i>
+          <span class="text adjust">城市服务</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-taobao icon-orange"></i>
+          <span class="text">淘宝</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-shenghuohuafeichongzhi icon-orange"></i>
+          <span class="text adjust">话费充值</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-wodejifenbao icon-blue"></i>
+          <span class="text">转账</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-icon-test icon-green"></i>
+          <span class="text adjust">蚂蚁森林</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-mayihuabei
+          icon-blue"></i>
+          <span class="text">花呗</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-paobu icon-orange"></i>
+          <span class="text">运动</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-shuidianjiaofei icon-blue"></i>
+          <span class="text adjust">水电缴费</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-jiankangma icon-green"></i>
+          <span class="text">健康</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-cainiao icon-blue"></i>
+          <span class="text adjust">菜鸟裹裹</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-jiankangma1
+          icon-green"></i>
+          <span class="text adjust-special">健康码</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-xiaochengxu
+          icon-blue"></i>
+          <span class="text adjust-special ">小程序</span>
         </div>
         <div class="father">
-          <i class="son iconfont">1</i>
-          <span class="text">5</span>
+          <i class="son iconfont icon-fuwu more"></i>
+          <span class="text">更多</span>
         </div>
       </div>
       <!-- 小程序 -->
-
+      <div class="space">
       <!-- 最近消息 -->
-
+      <div class="message">
+        <div class="title">
+          <span>最近消息</span>
+          <span>5条新消息<i class="iconfont icon-xiala"></i></span>
+        </div>
+        <div>
+          <i class="iconfont icon-mayihuabei
+">花呗支付助手</i>
+<i>支付成功</i>
+        </div>
+        <div></div>
+      </div>
       <!-- 最近消息 -->
 
       <!-- 轮播广告 -->
+
       <!-- 轮播广告 -->
+
+      </div>
 
     </div>
   </div>
@@ -296,18 +314,55 @@ export default {
     height: 390px;
     background-color: #F7F7F7;
     .father {
+      position: relative;
       float: left;
       width: 150px;
       height: 130px;
       background-color: #F7F7F7;
       .son {
         display: block;
+        position: absolute;
+        top: 35px;
+        left: 40px;
         width: 60px;
         height: 60px;
         font-size: 80px;
         line-height: 60px;
-        background-color: pink;
       }
+      .text {
+        position: absolute;
+        width: 100px;
+        top: 100px;
+        left: 55px;
+        font-size: 25px;
+      }
+      .adjust {
+        left: 35px;
+      }
+      .adjust-special {
+        left: 42px;
+      }
+      .icon-blue {
+        color: #3C83F6;
+      }
+      .icon-orange {
+        color: #F56327;
+      }
+      .icon-green {
+        color: #58A376;
+      }
+      .more {
+        color: #B8B8B8;
+      }
+    }
+  }
+  .space {
+    padding: 20px;
+    background-color: #F5F5F5;
+    .message {
+      width: 710px;
+      height: 280px;
+      background-color: #3C83F6;
     }
   }
 }
