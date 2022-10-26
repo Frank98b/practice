@@ -111,20 +111,47 @@
       <div class="message">
         <div class="title">
           <span>最近消息</span>
-          <span>5条新消息<i class="iconfont icon-xiala"></i></span>
+          <span>5条新消息<i class="iconfont icon-xiala fontsize"></i></span>
         </div>
-        <div>
-          <i class="iconfont icon-mayihuabei
-">花呗支付助手</i>
-<i>支付成功</i>
+        <div class="row">
+          <i class="iconfont icon-mayihuabei small-huabei
+          "><i class="innertext">花呗支付助手</i></i>
+          <i>支付成功</i>
+          <span class="time">3小时以前</span>
         </div>
-        <div></div>
+        <div class="row">
+          <i class="iconfont icon-icon-test small-tree
+          "><i class="innertext">蚂蚁森林</i></i>
+          <i>刚成熟的 52g绿色能量等你收取</i>
+          <span class="time">4小时以前</span>
+        </div>
       </div>
       <!-- 最近消息 -->
 
       <!-- 轮播广告 -->
-
+      <div class="banner">
+        <ul class="imgList">
+          <li><img src="@/assets/picture/banner1.png" alt=""></li>
+          <li><img src="@/assets/picture/banner2.png" alt=""></li>
+          <li><img src="@/assets/picture/banner3.png" alt=""></li>
+          <li><img src="@/assets/picture/banner4.png" alt=""></li>
+          <li><img src="@/assets/picture/banner1.png" alt=""></li>
+        </ul>
+      </div>
       <!-- 轮播广告 -->
+
+      <div class="message">
+        <div class="title">
+          <span class="find">发现精彩</span>
+          <span><i class="iconfont icon-xiala fontsize"></i></span>
+        </div>
+        <div class="row">
+          <img class="image1" src="@/assets/picture/手机.png" alt="华为">
+        </div>
+        <div class="row">
+          <img class="image2" src="@/assets/picture/立租机.png" alt="立租机">
+        </div>
+      </div>
 
       </div>
 
@@ -134,7 +161,6 @@
 </template>
 
 <script>
-import { Toast } from 'vant'
 export default {
   name: 'IndexPage',
   components: {},
@@ -145,13 +171,24 @@ export default {
   computed: {},
   watch: {},
   created () {},
-  mounted () {},
+  mounted () {
+    this.bannerRun()
+  },
   methods: {
-    onClickLeft () {
-      Toast('返回')
-    },
-    onClickRight () {
-      Toast('按钮')
+    bannerRun () {
+      function run () {
+        let left = 0
+        const imgList = document.querySelector('imgList')
+        if (left <= -3200) {
+          left = 0
+        }
+        imgList.style.marginRight = 300 + 'px'
+        let n
+        n = (left % 680 === 0) ? n = 1200 : n = 10
+        left -= 10
+        setInterval(run, n)
+      }
+      run()
     }
   }
 }
@@ -357,12 +394,89 @@ export default {
     }
   }
   .space {
+    margin-bottom: 100px;
     padding: 20px;
     background-color: #F5F5F5;
+    .banner {
+      * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+      }
+      margin-left: 15px;
+      border-radius: 10px;
+      width: 680px;
+      height: 145px;
+      // border: 1px solid #1A1A1A;
+      overflow: hidden;
+      .imgList {
+        width: 2720px;
+        height: 145px;
+        li {
+          img {
+            width: 680px;
+            height: 145px;
+          }
+          float: left;
+        }
+      }
+    }
     .message {
-      width: 710px;
+      width: 680px;
       height: 280px;
-      background-color: #3C83F6;
+      margin: 15px;
+      border-radius: 15px;
+      background-color: #FFFFFF;
+      .title {
+        display: flex;
+        padding: 12px;
+        justify-content: space-between;
+        font-size: 25px;
+        color: #797979;
+        .fontsize {
+          font-size: 25px;
+        }
+        .find {
+          font-size: 25px;
+          font-weight: 700;
+          color: #1A1A1A;
+        }
+      }
+      .row {
+        display: flex;
+        padding: 20px;
+        justify-content: space-between;
+        line-height: 40px;
+        font-size: 25px;
+        color: #797979;
+        .image1 {
+          width: 290px;
+        }
+        .image2 {
+          width: 640px;
+        }
+        .time {
+          font-size: 15px;
+          color: #D4D4D4;
+        }
+        .small-huabei {
+          font-size: 25px;
+          color: #3F76E8;
+          .innertext {
+            font-weight: 700;
+            color: #1A1A1A;
+          }
+        }
+        .small-tree {
+          font-size: 25px;
+          color: #57AE82;
+          .innertext {
+            font-weight: 700;
+            color: #1A1A1A;
+          }
+        }
+      }
     }
   }
 }
