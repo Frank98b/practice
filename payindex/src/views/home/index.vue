@@ -129,14 +129,33 @@
       <!-- 最近消息 -->
 
       <!-- 轮播广告 -->
-      <div class="banner">
-        <ul class="imgList">
-          <li><img src="@/assets/picture/banner1.png" alt=""></li>
-          <li><img src="@/assets/picture/banner2.png" alt=""></li>
-          <li><img src="@/assets/picture/banner3.png" alt=""></li>
-          <li><img src="@/assets/picture/banner4.png" alt=""></li>
-          <li><img src="@/assets/picture/banner1.png" alt=""></li>
-        </ul>
+      <div class="lunbo">
+      <div class="content">
+      <ul id="item">
+        <li class="item">
+        <a href="#"><img src="@/assets/picture/banner1.png" ></a>
+        </li>
+        <li class="item">
+        <a href="#"><img src="@/assets/picture/banner2.png" ></a>
+        </li>
+        <li class="item">
+        <a href="#"><img src="@/assets/picture/banner3.png" ></a>
+        </li>
+        <li class="item">
+        <a href="#"><img src="@/assets/picture/banner4.png" ></a>
+        </li>
+      </ul>
+      <div id="btn-left"></div>
+      <div id="btn-right">></div>
+      <ul id="circle">
+
+        <li class="circle"></li>
+        <li class="circle"></li>
+        <li class="circle"></li>
+        <li class="circle"></li>
+        <li class="circle"></li>
+      </ul>
+      </div>
       </div>
       <!-- 轮播广告 -->
 
@@ -176,19 +195,72 @@ export default {
   },
   methods: {
     bannerRun () {
-      function run () {
-        let left = 0
-        const imgList = document.querySelector('imgList')
-        if (left <= -3200) {
-          left = 0
+      const items = document.getElementsByClassName('item')
+      const circles = document.getElementsByClassName('circle')
+      const leftBtn = document.getElementById('btn-left')
+      const rightBtn = document.getElementById('btn-right')
+      const content = document.querySelector('.content')
+      let index = 0
+      let timer = null
+
+      // 清除class
+      const clearclass = function () {
+        for (let i = 0; i < items.length; i++) {
+          items[i].className = 'item'
+          circles[i].className = 'circle'
+          circles[i].setAttribute('num', i)
         }
-        imgList.style.marginRight = 300 + 'px'
-        let n
-        n = (left % 680 === 0) ? n = 1200 : n = 10
-        left -= 10
-        setInterval(run, n)
       }
-      run()
+      /* 只显示一个class */
+      function move () {
+        clearclass()
+        items[index].className = 'item active'
+        circles[index].className = 'circle white'
+      }
+      // 点击右边按钮切换下一张图片
+      rightBtn.onclick = function () {
+        if (index < items.length - 1) {
+          index++
+        } else {
+          index = 0
+        }
+        move()
+      }
+      // 点击左边按钮切换上一张图片
+      leftBtn.onclick = function () {
+        if (index < items.length) {
+          index--
+        } else {
+          index = items.length - 1
+        }
+        move()
+      }
+      // 开始定时器，点击右边按钮，实现轮播
+      timer = setInterval(function () {
+        rightBtn.onclick()
+      }, 1500)
+      // 点击圆点时，跳转到对应图片
+      for (let i = 0; i < circles.length; i++) {
+        circles[i].addEventListener('click', function () {
+          const pointIndex = this.getAttribute('num')
+          index = pointIndex
+          move()
+        })
+      }
+      // 鼠标移入清除定时器，并开启一个三秒的定时器，使慢慢转动
+      content.onmouseover = function () {
+        clearInterval(timer)
+        timer = setInterval(function () {
+          rightBtn.onclick()
+        }, 3000)
+      }
+      // 鼠标移出又开启定时器
+      content.onmouseleave = function () {
+        clearInterval(timer)
+        timer = setInterval(function () {
+          rightBtn.onclick()
+        }, 1500)
+      }
     }
   }
 }
@@ -397,30 +469,100 @@ export default {
     margin-bottom: 100px;
     padding: 20px;
     background-color: #F5F5F5;
-    .banner {
-      * {
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-        list-style: none;
-      }
-      margin-left: 15px;
-      border-radius: 10px;
-      width: 680px;
-      height: 145px;
-      // border: 1px solid #1A1A1A;
-      overflow: hidden;
-      .imgList {
-        width: 2720px;
-        height: 145px;
-        li {
-          img {
-            width: 680px;
-            height: 145px;
-          }
-          float: left;
-        }
-      }
+    // -----------------------------------
+    // -----------------------------------
+    a{
+    list-style: none;
+    }
+    li{
+    list-style: none;
+    }
+    .lunbo{
+    width: 100%;
+    margin-bottom: 40px;
+    }
+    .content{
+    width: 680px;
+    height: 145px;
+    margin: 20px auto;
+    border-radius: 10px;
+    position: relative;
+    }
+    #item{
+    width: 100%;
+    height: 100%;
+
+    }
+    .item{
+    position: absolute;
+    opacity: 0;
+    transition: all 1s;
+
+    }
+    .item.active{
+    opacity:1;
+    }
+    img{
+    width: 100%;
+    }
+    #btn-left{
+    width: 30px;
+    height: 69px;
+    font-size: 30px;
+    color: white;
+    background-color:rgba(0,0,0,0.4);
+    line-height: 69px;
+    padding-left:5px;
+    z-index: 10;/*始终显示在图片的上层*/
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-60%);/*使按钮向上偏移居中对齐*/
+    cursor: pointer;
+    opacity: 0;/*平时隐藏*/
+    }
+    .lunbo:hover #btn-left{
+    /*鼠标滑入，显示图标*/
+    opacity: 1;
+    }
+
+    #btn-right{
+    width: 26px;
+    height: 69px;
+    font-size: 30px;
+    color: white;
+    background-color:rgba(0,0,0,0.4);
+    line-height: 69px;
+    padding-left: 5px;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(-60%);
+    }
+    .lunbo:hover #btn-right{
+    opacity: 1;
+    }
+    #circle{
+    height: 20px;
+    display: flex;
+    position: absolute;
+    bottom: 35px;
+    right: 25px;
+    }
+    .circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    background: rgba(0,0,0,0.4);
+    cursor: pointer;
+    margin: 5px;
+    }
+    .white{
+    background-color: #FFFFFF;
     }
     .message {
       width: 680px;
